@@ -1,0 +1,3398 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+
+
+
+
+
+
+
+	<script language="javascript" type="text/JavaScript" src="http://esaj.tjsc.jus.br/sajcas/verificarLogin.js?script=1414605505323"></script>
+	
+	<script language="javascript">
+		if(window.sajcas && window.sajcas.usuarioLogadoNoCasServer) {
+			var urlRetornoSistema = '';
+			if(urlRetornoSistema === '') {
+				urlRetornoSistema = window.location.href;
+			}
+	
+			if(urlRetornoSistema.lastIndexOf('?') != -1) {
+				urlRetornoSistema += '&';
+			} else {
+				urlRetornoSistema += '?';
+			}
+			urlRetornoSistema+= 'gateway=true';
+			window.location.href = urlRetornoSistema;
+		}
+	</script>
+
+	<title>Portal de Serviços e-SAJ</title>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Includes do spw -->
+<link rel="stylesheet" href="/cpopg/css/spw/spwConcatenado-4.3.3-7.css" type="text/css"/>
+<link rel="stylesheet" href="/cpopg/css/esaj.css" type="text/css"/>
+<link rel="stylesheet" href="/cpopg/css/saj/saj-captcha.css" type="text/css"/>
+<link rel="stylesheet" href="/cpopg/css/cpo.css" type="text/css"/>	
+<link rel="stylesheet" href="/cpopg/css/formulario.css" type="text/css"/>
+<link rel="stylesheet" href="/cpopg/css/saj/saj-popup-modal.css" type="text/css"/>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<!-- 
+<script language="javascript" type="text/JavaScript" src="/cpopg/dwr/engine.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/dwr/util.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/dwr/interface/CpoAjaxAction.js"></script>
+ -->
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/jquery/jquery-1.3.2.js"></script>
+<script language="javascript" type="text/javascript" src="/cpopg/js/jquery/jquery.jplayer.js"></script>
+<script language="javascript" type="text/javascript" src="/cpopg/js/jquery/jquery.blockUI.js"></script>
+
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-web.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-tooltip.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-popup-modal.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-browser.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-mascara-input.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj/saj-numeroProcesso.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/spw/spwConcatenado-4.3.3-7.js"></script>
+
+ 
+<script>
+	window.saj = window.saj || {};
+	window.saj.env = window.saj.env || {};
+	window.saj.env.root = '/cpopg';
+	window.saj.env.css = '/cpopg/css';
+	window.saj.env.js = '/cpopg/js';
+	window.saj.env.imagens = '/cpopg/imagens';
+	window.saj.env.queryString = 'conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc';	
+
+	window.saj.cpo = window.saj.cpo || {};
+
+	// transfere variavel se cpo esta rodando para totem
+	window.saj.cpo.totem = 'false' == 'true';
+</script>
+
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/saj-cpo-cbpesquisa.js"></script>
+<script language="javascript" type="text/JavaScript" src="/cpopg/js/formulario.js"></script>
+
+	
+
+
+<script>
+	(function($){
+		$(function(){
+			var intervalo = 600000;
+			$.saj.manterSessao('/cpopg/manterSessao.do', intervalo);
+		});
+				
+	})(jQuery);
+</script>
+
+
+
+
+	
+	<link rel="stylesheet" href="/cpopg/css/saj/saj-paginacao.css" type="text/css"/>
+	<script language="javascript" type="text/JavaScript" src="/cpopg/jsp/list.js" ></script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+
+<link href="http://esaj.tjsc.jus.br/esaj/tema/padrao/css/esajComum.css" rel="stylesheet" type="text/css" />
+<link href="http://esaj.tjsc.jus.br/esaj/tema/padrao/css/esajLayout.css" rel="stylesheet" type="text/css" />
+<link href="http://esaj.tjsc.jus.br/esaj/tema/padrao/clientes/SC/css/esajLayoutSC.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+/* botao default means o mais claro, que seria o "botão principal" */
+.spwBotaoDefault, .spwBotaoDefault-o { 
+	background-image: url(http://esaj.tjsc.jus.br/esaj/tema/padrao/clientes/SC/imagens/layout/fundoBotaoDefault.gif);
+}
+/* o botao secundario, menos provavel de ser clicado, mais escuro */
+.spwBotao, .spwBotao-o { 
+	background-image: url(http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/fundoBotao.gif);
+}
+-->
+</style>
+
+
+<script language="javascript" type="text/JavaScript" src="http://esaj.tjsc.jus.br/esaj/tema/padrao/js/menu.js"></script>
+
+<link rel="shortcut icon" href="http://esaj.tjsc.jus.br/esaj/tema/padrao/clientes/SC/imagens/favicon.ico" type="image/x-icon" />
+
+
+	
+
+
+  
+
+	<script type="text/javascript">
+		(function($) {
+			$(function(){
+				// Correção temporária do alinhamento do divisor de seção de formulário do SPW 
+				$('td[background$=spw/fundo_subtitulo2.gif]').attr('valign', 'top');
+			})
+		})(jQuery);;
+	</script>
+</head>
+ 
+ 
+<body>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="esajTabelaCabecalhoCliente" summary=" ">
+	<tr>
+		<td><a href="http://www.tjsc.jus.br"><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/clientes/SC/imagens/layout/cabecalhoLogo.jpg" width="381" height="58" alt="Poder Judiciário de Santa Catarina" /></a></td>
+		<td align="right" valign="top"><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/clientes/SC/imagens/layout/cabecalhoImagem.jpg" alt=" " width="276" height="58" /></td>
+	</tr>
+</table>
+	
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+
+
+<!-- cabecalho e-Saj -->
+<table width="100%" cellpadding="0" cellspacing="0" class="esajTabelaCabecalhoServico" summary=" ">
+	<tr>
+		<td class="esajCelulaCabecalhoServicoLogo">
+<a href="http://esaj.tjsc.jus.br/esaj/index.jsp"><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/eSajServico.gif" title="Voltar para página inicial do e-SAJ" alt="Voltar para página inicial do e-SAJ" width="255" height="53" border="0" /></a><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/eSajServicoInf.gif" alt=" " width="255" height="28" border="0" /></td>
+		<td class="esajCelulaCabecalhoServicoMenu">
+		    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary=" ">
+				<tr>
+					<td align="right">
+
+
+
+
+
+
+
+
+
+
+<img height="24" width="47" alt=" " src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/inicioMenuSup.jpg"/><a href="http://esaj.tjsc.jus.br/caixapostal"><img height="24" width="83" border="0" alt="Caixa postal" src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/caixaPostal.gif"/></a><img height="24" width="4" alt=" " src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/menuSeparador.jpg"/><a href="http://esaj.tjsc.jus.br/esaj/cadastro.do"><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/cadastro.gif" alt="Cadastro" width="81" height="24" border="0" /></a><img height="24" width="4" alt=" " src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/menuSeparador.jpg"/><a target="blank" href="http://esaj.tjsc.jus.br/WebHelp/"><img height="24" width="61" border="0" alt="Ajuda do e-Saj" src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/ajuda.gif"/></a></td>
+				</tr>
+				<tr>
+					<td class="esajCelulaIdentificacaoServico" >
+
+
+
+<span id="identificacao"></span>
+
+
+
+
+	
+	
+		<script language="javascript" type="text/JavaScript" src="http://esaj.tjsc.jus.br/sajcas/conteudoIdentificacao?script=1413688298249"></script>
+	
+
+</td>
+				</tr>
+				<tr>
+					<td class="esajCelulaCabecalhoServicoCaminho" >
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+<a href="http://esaj.tjsc.jus.br/esaj/portal.do?servico=740000" class="esajCaminhoLink">Página inicial</a>
+
+ &gt;
+
+
+<a href="http://esaj.tjsc.jus.br/esaj/portal.do?servico=190090" class="esajCaminhoLink">Consultas Processuais</a>
+
+ &gt;
+
+
+
+Consulta de Processos do 1ºGrau
+</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- CONTEUDO -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="esajTabelaTitulo">
+	<tr>
+		<td class="esajCelulaMenuSuspenso">
+		<a href="#" onclick="return showMenuSuspenso()"><img src="http://esaj.tjsc.jus.br/esaj/tema/padrao/imagens/layout/menuSuspenso.gif" alt="Menu de servi&ccedil;os" width="243" height="21" style="display:block" /></a>
+		<div id="layerMenu" style="display:none">
+			
+
+    
+	
+	
+
+<!-- MENU -->
+<ul id="esajMenuArea">
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Custas Processuais - Primeiro Grau</a>
+<ul>
+  <li class="esajMenuItem"><a href="javascript:popup('http://cgjweb.tjsc.jus.br/sitecgj/mail3.jsp')">Processos em andamento</a></li>
+  <li class="esajMenuItem"><a href="javascript:popup('http://cgjweb.tjsc.jus.br/sitecgj/mail2.jsp')">Cartas Precatórias</a></li>
+  <li class="esajMenuItem"><a href="javascript:popup('http://cgjweb.tjsc.jus.br/sitecgj/mail1.jsp')">Custas iniciais (protocolo de petições físicas)</a></li>
+  <li class="esajMenuItem"><a href="javascript:popup('http://cgjweb.tjsc.jus.br/sitecgj/esaj.jsp')">Custas iniciais (peticionamento eletrônico) </a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/ccpweb/abrirConsultaCustas.do">Consulta e Solicitação de atualização de cálculo (processos eletrônicos)</a></li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Consultas Processuais</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/cpopg/open.do">Consulta de Processos do 1ºGrau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/cposg5/sgcr/open.do">Consulta de Processos - Turmas Recursais</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/cpoprec/open.do">Consulta de Processos - Precatórios</a></li>
+</ul>
+  </li>
+  <li class="esajMenuFechado"><a href="http://esaj.tjsc.jus.br/cpa">Pauta de Audiência</a></li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Certidões</a>
+<ul>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Certidões de 1ºgrau</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/sco/abrirCadastro.do">Cadastro de Pedido de Certidão</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/sco/abrirConferencia.do">Conferência de Certidão</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/sco/abrirDownload.do">Download de Certidão</a></li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Certidões de 2º grau</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/scosg/abrirCadastro.do">Cadastro de Pedido de Certidão de 2º Grau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/scosg/abrirConferencia.do">Conferência de Certidão de 2º Grau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/scosg/abrirDownload.do">Download de Certidão de 2º Grau</a></li>
+</ul>
+  </li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Conferência de Documento  - Precatórios</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/pastadigitalprec/pg/abrirConferenciaDocumento.do">Conferência de Documento Digital - Precatórios</a></li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Conferência de Documento Digital</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/pastadigital/pg/abrirConferenciaDocumento.do">Conferência de Documento Digital do 1ºGrau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/pastadigital/sgcr/abrirConferenciaDocumento.do">Conferência de Documento Digital - Turmas Recursais</a></li>
+</ul>
+  </li>
+  <li class="esajMenuFechado"><a href="http://app2.tjsc.jus.br/pautasg5cr/pcpoOrgaosJulgadores.jsp">Consulta da Pauta de Julgamento</a></li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Intimações e Citações On-line</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/intimacoesweb/abrirConsultaAtosRecebidos.do">Consulta de Intimações Recebidas</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/intimacoesweb/abrirConsultaAtosNaoRecebidos.do">Recebimento de Intimações Eletrônicas</a></li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Peticionamento Eletrônico de 1º Grau</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petpg/abrirNovaPeticaoInicial.do">Peticionamento Inicial de 1º Grau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petpg/abrirVerificacaoRequisitosPet.do">Verificação de Requisitos</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petpg/abrirNovaPeticaoIntermediaria.do">Peticionamento Intermediário de 1º Grau</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petpg/abrirConsultaPeticoes.do">Consulta de Petições de 1º Grau</a></li>
+</ul>
+  </li>
+	<li class="esajMenuFechado"><a href="#" onclick="return esajMenu(this)">Peticionamento Eletrônico de Turmas Recursais</a>
+<ul>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petcr/abrirNovaPeticaoInicial.do">Peticionamento Inicial - Turmas Recursais</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petcr/abrirNovaPeticaoIntermediaria.do">Peticionamento Intermediário - Turmas Recursais</a></li>
+  <li class="esajMenuItem"><a href="http://esaj.tjsc.jus.br/petcr/abrirConsultaPeticoes.do">Consulta de Petições - Turmas Recursais</a></li>
+</ul>
+  </li>
+</ul>
+
+		</div>
+		</td>
+		<td class="esajCelulaTituloServico"><h1 class="esajTituloPagina">Consulta de Processos do 1ºGrau</h1></td>
+	</tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" summary=" ">
+	<tr>
+		<td class="esajCelulaConteudoServico" >
+		
+	
+
+
+  
+ 
+
+
+	        	  	
+  		 
+	    	<form name="consultarProcessoForm" method="GET" action="/cpopg/search.do" id="openForm">  
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="esajTituloOrientacoes">Orientações</span>
+<ul class="esajUlOrientacoes" id="">
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<li>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+Os números de processo que não possuem formato unificado poderão ser consultados através da opção "Outros".
+
+
+		
+	</li>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<li>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+Dúvidas? Clique <a style="cursor:pointer" class="layout" onclick="popup('/WebHelp/id_consultas_processuais.htm','','location=no, toolbar=no, resizable=yes, width=795, height=560, scrollbars=yes')">aqui</a> para mais informações sobre como pesquisar.
+
+
+		
+	</li>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<li>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+Processos baixados, em segredo de justiça ou distribuídos no mesmo dia serão apresentados somente na pesquisa pelo número do processo.
+
+
+		
+	</li>
+
+
+	
+
+</ul>
+
+<br>
+
+	
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+<form name="consultarProcessoForm" method="GET" action="/cpopg/search.do" autocomplete="off" enctype="" onsubmit="return applySubmit(this, eval('function spwSubmit(t, e){if (!IS_enableSubmit) return false; return BENV_isCamposValidos(t); } spwSubmit(this, event);'));" id="formConsulta" target="">
+	<input type="hidden" name="conversationId" value="">
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+			
+		
+		
+	
+	
+	<div class="">
+		
+			<br/>
+						
+			
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top">
+	   <td height="21" valign="top" nowrap background="/cpopg/imagens/spw/fundo_subtitulo.gif" class="subtitle"> Dados para Pesquisa </td>
+    <td background="/cpopg/imagens/spw/fundo_subtitulo2.gif" width="90%">
+      <img src="/cpopg/imagens/spw/final_subtitulo.gif" width="16" height="20"></td>
+  </tr>
+</table>	
+			<br/>
+		
+		<table id="secaoFormConsulta" class="secaoFormBody" width="100%" cellpadding="2" cellspacing="0" border="0">
+				
+				
+				
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				<tr class="">
+				
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Comarca:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	
+		
+		
+		
+			
+		    	<select name="dadosConsulta.localPesquisa.cdLocal" obrigatorio="" rotulo="Comarca"><option value="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+					
+
+
+
+Todas comarcas
+
+</option>
+				
+					<option value="1">Abelardo Luz</option>
+<option value="2">Anchieta</option>
+<option value="3">Anita Garibaldi</option>
+<option value="103">Araquari</option>
+<option value="4">Araranguá</option>
+<option value="159">Armazém</option>
+<option value="104">Ascurra</option>
+<option value="5">Balneário Camboriú</option>
+<option value="48">Balneário Piçarras</option>
+<option value="6">Barra Velha</option>
+<option value="7">Biguaçu</option>
+<option value="8">Blumenau</option>
+<option value="9">Bom Retiro</option>
+<option value="10">Braco do Norte</option>
+<option value="11">Brusque</option>
+<option value="12">Caçador</option>
+<option value="113">Camboriú</option>
+<option value="216">Campo Belo do Sul</option>
+<option value="13">Campo Erê</option>
+<option value="14">Campos Novos</option>
+<option value="15">Canoinhas</option>
+<option value="16">Capinzal</option>
+<option value="23">Capital</option>
+<option value="163">Capivari de Baixo</option>
+<option value="218">Catanduvas</option>
+<option value="18">Chapecó</option>
+<option value="19">Concórdia</option>
+<option value="85">Coronel Freitas</option>
+<option value="83">Correia Pinto</option>
+<option value="20">Criciúma</option>
+<option value="21">Cunha Porã</option>
+<option value="22">Curitibanos</option>
+<option value="84">Descanso</option>
+<option value="17">Dionísio Cerqueira</option>
+<option value="166">Forquilhinha</option>
+<option value="24">Fraiburgo</option>
+<option value="167">Garopaba</option>
+<option value="119">Garuva</option>
+<option value="25">Gaspar</option>
+<option value="26">Guaramirim</option>
+<option value="235">Herval do Oeste</option>
+<option value="27">Ibirama</option>
+<option value="28">Içara</option>
+<option value="29">Imarui</option>
+<option value="30">Imbituba</option>
+<option value="31">Indaial</option>
+<option value="242">Ipumirim</option>
+<option value="124">Itá</option>
+<option value="32">Itaiópolis</option>
+<option value="33">Itajaí</option>
+<option value="125">Itapema</option>
+<option value="34">Itapiranga</option>
+<option value="126">Itapoá</option>
+<option value="35">Ituporanga</option>
+<option value="282">Jaguaruna</option>
+<option value="36">Jaraguá do Sul</option>
+<option value="37">Joaçaba</option>
+<option value="38">Joinville</option>
+<option value="39">Lages</option>
+<option value="40">Laguna</option>
+<option value="87">Lauro Müller</option>
+<option value="88">Lebon Régis</option>
+<option value="41">Mafra</option>
+<option value="42">Maravilha</option>
+<option value="175">Meleiro</option>
+<option value="256">Modelo</option>
+<option value="43">Mondai</option>
+<option value="135">Navegantes</option>
+<option value="44">Orleans</option>
+<option value="86">Otacílio Costa</option>
+<option value="45">Palhoça</option>
+<option value="46">Palmitos</option>
+<option value="47">Papanduva</option>
+<option value="49">Pinhalzinho</option>
+<option value="50">Pomerode</option>
+<option value="51">Ponte Serrada</option>
+<option value="139">Porto Belo</option>
+<option value="52">Porto Uniao</option>
+<option value="141">Presidente Getúlio</option>
+<option value="53">Quilombo</option>
+<option value="143">Rio do Campo</option>
+<option value="144">Rio do Oeste</option>
+<option value="54">Rio do Sul</option>
+<option value="55">Rio Negrinho</option>
+<option value="56">Santa Cecília</option>
+<option value="189">Santa Rosa do Sul</option>
+<option value="57">Santo Amaro da Imperatriz</option>
+<option value="58">São Bento do Sul</option>
+<option value="59">São Carlos</option>
+<option value="60">São Domingos</option>
+<option value="61">Sao Francisco do Sul</option>
+<option value="62">São João Batista</option>
+<option value="63">São Joaquim</option>
+<option value="64">São José</option>
+<option value="65">São José do Cedro</option>
+<option value="66">São Lourenço do Oeste</option>
+<option value="67">São Miguel do Oeste</option>
+<option value="68">Seara</option>
+<option value="69">Sombrio</option>
+<option value="70">Taió</option>
+<option value="71">Tangará</option>
+<option value="72">Tijucas</option>
+<option value="73">Timbó</option>
+<option value="74">Trombudo Central</option>
+<option value="75">Tubarão</option>
+<option value="76">Turvo</option>
+<option value="77">Urubici</option>
+<option value="78">Urussanga</option>
+<option value="79">Videira</option>
+<option value="80">Xanxerê</option>
+<option value="81">Xaxim</option></select>
+			
+			
+		
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				<tr class="">
+				
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Pesquisar por:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	<table cellpadding="0" cellspacing="0" border="0" width="">
+		<tr>
+			<td>
+				
+				
+					
+
+
+
+
+
+
+
+
+
+<select name="cbPesquisa"><option value="NUMPROC">Número do Processo</option>	
+	
+ 		<option value="NMPARTE">Nome da parte</option>	
+	
+ 		<option value="DOCPARTE" selected="selected">Documento da Parte</option>	
+	
+ 		<option value="NMADVOGADO">Nome do Advogado</option>	
+	
+ 		<option value="NUMOAB">OAB</option>	
+	
+ 		<option value="PRECATORIA">N° da Carta Precatória na Origem</option>	
+	
+ 		<option value="DOCDELEG">N° do Documento na Delegacia</option></select>
+
+				
+				
+			</td>
+		</tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+				
+				
+				
+					
+						
+						
+							
+								
+								
+									
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+
+	
+	 
+		
+	
+	 
+		
+	
+	
+	
+	
+	
+	
+		<script>$.saj.numeroProcesso.desabilitarNumeroOculto = false;</script>
+	
+
+	
+		
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				<tr class="">
+				
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	<table cellpadding="0" cellspacing="0" border="0" width="">
+		<tr>
+			<td>
+				
+				
+			   <input type="radio" name="dadosConsulta.tipoNuProcesso" value="UNIFICADO" checked="checked" id="radioNumeroUnificado"><label for="radioNumeroUnificado">Unificado</label>
+			   <input type="radio" name="dadosConsulta.tipoNuProcesso" value="SAJ" id="radioNumeroAntigo"><label for="radioNumeroAntigo">Outros</label>
+			
+				
+			</td>
+		</tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="NUMPROC" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Número do Processo:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	<table cellpadding="0" cellspacing="0" border="0" width="">
+		<tr>
+			<td>
+				
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		<span id="linhaProcessoUnificado">
+		
+	
+	
+	
+
+
+
+
+
+
+
+
+	
+
+
+	
+	
+	
+	
+	
+	
+
+
+	
+ 
+<input type="text" name="numeroDigitoAnoUnificado" maxlength="25" size="20" value="" formatType="TEXT" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" id="numeroDigitoAnoUnificado">
+<input type="text" id="JTRNumeroUnificado" size="3" disabled="disabled" value="8.24"/>
+<input type="text" name="foroNumeroUnificado" maxlength="4" size="3" value="" formatType="TEXT" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" id="foroNumeroUnificado">
+<input type="hidden" name="dadosConsulta.valorConsultaNuUnificado" value="" id="nuProcessoUnificadoFormatado">
+
+
+<script>
+	(function($){
+		$(function() {
+			var saj = $.saj;
+			var mascaraNumeroUnificado = saj.mascaraNumeroUnificado;
+			var $campoNumeroDigitoAnoUnificado = $('input#numeroDigitoAnoUnificado');
+			var $campoForoNumeroUnificado = $('input#foroNumeroUnificado');
+			var $campoJTRNumeroUnificado = $('input#JTRNumeroUnificado');
+			saj.configurarMascaraInput($campoForoNumeroUnificado, '0000');
+			saj.configurarMascaraInput($campoNumeroDigitoAnoUnificado, mascaraNumeroUnificado, $campoForoNumeroUnificado,{
+				afterPaste: afterPaste			
+			});
+			saj.bindCamposNumeroProcesso();
+			
+			var conteudoToolTip = '';
+			if(!conteudoToolTip){
+				conteudoToolTip = '<div style="width: 500px;" ><div><b>Número de Processo Unificado</b></div><div>O sistema disponibiliza facilidades no preenchimento do número unificado, seu formato é NNNNNNN-DD.AAAA.J.TR.OOOO:</div><div style="padding-top: 3px;"><b>NNNNNNN</b>: Caso o número possua zeros à esquerda o sistema preenche-os automaticamente, basta informar o número e o dígito "-" ou ".". Exemplo: ao informar "310-" o sistema irá preencher "0000310-".</div><div><b>DD</b>     : Deve ser preenchido pelo usuário.</div><div><b>AAAA</b>   : Ao informar dois dígitos para o ano o sistema completa o mesmo, basta pressionar a tecla Tab. Exemplo: ao informar "08" e "Tab" o sistema irá preencher "2008".</div><div><b>J.TR</b>    : São números fixos preenchidos pelo sistema.Exemplo: 8.99.</div><div><b>OOOO</b>   : Caso o número possua zeros à esquerda o sistema preenche-os automaticamente, basta informar o número pressionar a tecla Tab. Exemplo: ao informar "10" e "Tab" o sistema irá preencher "0010".</div></div>';
+			}
+			$('input#numeroDigitoAnoUnificado, input#foroNumeroUnificado').registrarTooltip({
+						conteudoTooltip: conteudoToolTip,
+						localImagensTooltip: '/cpopg/imagens/saj',
+						offsetHorizontalExtra: '',
+						offsetVertficalExtra: '',
+						urlConteudoTooltip: '',
+						posicaoTooltip: '',
+						objReferenciaPosicaoTooltip:$campoForoNumeroUnificado
+			});
+								
+		});		
+		
+		var afterPaste = function(textoOriginal) {
+			var texto = getDigits(textoOriginal);
+			if (!texto || texto.length < 16) {
+				return;
+			}
+			
+			var jtr = $('#JTRNumeroUnificado').val();
+			jtr = getDigits(jtr);
+			var jtrDigitado = texto.substring(13,16);
+			var foroUnificado;
+			//pega os 4 ultimos digitos, e caso o jtr colado for o mesmo, coloca os 4 no campo de foro unificado
+			//se o jtr for diferente nao coloca nada no campo de foro unificado
+			if (jtr == jtrDigitado) {
+				foroUnificado = texto.substring(16,texto.length);
+			} else {
+				foroUnificado = '';
+			}
+			
+			var numeroDigitoAno = texto.substring(0,13);
+			var $numeroDigitoAno = $('input#numeroDigitoAnoUnificado');
+			$numeroDigitoAno.val(numeroDigitoAno);
+			
+			var $foroNumeroUnificado = $('#foroNumeroUnificado');
+			$foroNumeroUnificado.val(foroUnificado);
+			$foroNumeroUnificado.trigger('blur');	
+			$foroNumeroUnificado.focus();
+		};
+		
+		var getDigits = function(texto) {
+			return texto.replace(/[^0-9]/g, '');
+		};
+		
+	})(jQuery);
+	
+</script>
+
+	
+	
+	
+	    
+    
+	
+	
+		
+	
+	
+	
+	
+		</span>
+	
+
+
+
+				
+					
+					
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+	
+	
+	
+	
+	
+		<span id="linhaProcessoAntigo">
+		
+	
+	
+	
+			
+			
+				<input type="text" name="dadosConsulta.valorConsulta" size="" value="05272057961" formatType="TEXT" formato="25" obrigatorio="false" rotulo="" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" style="" class="spwCampoTexto disabled " id="nuProcessoAntigoFormatado">
+			
+		
+	
+	
+	
+		
+	    
+    
+	
+	
+	
+		
+	
+	
+	
+	
+		</span>
+	
+
+
+
+
+					
+				
+				
+			
+				
+			</td>
+		</tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+		
+	
+
+								
+							
+						
+						
+						
+						
+					
+				
+					
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="NMPARTE" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Nome da parte:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	<table cellpadding="0" cellspacing="0" border="0" width="">
+		<tr>
+			<td>
+				
+				
+								<input type="text" name="dadosConsulta.valorConsulta" value="05272057961" formatType="TEXT" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" class="spwCampoTexto">
+								<input type="checkbox" name="chNmCompleto" value="true" style="margin-top: 0;">
+								<label>Pesquisar por nome completo</label>
+							
+				
+			</td>
+		</tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+						
+						
+					
+				
+					
+						
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="DOCPARTE" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Documento da Parte:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	
+			
+				<input type="text" name="dadosConsulta.valorConsulta" size="" value="05272057961" formatType="TEXT" formato="100" obrigatorio="false" rotulo="Documento da Parte" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" style="" class="spwCampoTexto disabled ">
+			
+			
+		
+	
+	
+	
+		
+	    
+    
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+
+						
+					
+				
+					
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="NMADVOGADO" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Nome do Advogado:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	<table cellpadding="0" cellspacing="0" border="0" width="">
+		<tr>
+			<td>
+				
+				
+								<input type="text" name="dadosConsulta.valorConsulta" value="05272057961" formatType="TEXT" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" class="spwCampoTexto">
+								<input type="checkbox" name="chNmCompleto" value="true" style="margin-top: 0;">
+								<label>Pesquisar por nome completo</label>
+							
+				
+			</td>
+		</tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+						
+						
+					
+				
+					
+						
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="NUMOAB" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">OAB:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	
+			
+				<input type="text" name="dadosConsulta.valorConsulta" size="" value="05272057961" formatType="TEXT" formato="100" obrigatorio="false" rotulo="OAB" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" style="" class="spwCampoTexto disabled ">
+			
+			
+		
+	
+	
+	
+		
+	    
+    
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+
+						
+					
+				
+					
+						
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="PRECATORIA" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Nº da precatória:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	
+			
+				<input type="text" name="dadosConsulta.valorConsulta" size="" value="05272057961" formatType="TEXT" formato="100" obrigatorio="false" rotulo="Nº da precatória" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" style="" class="spwCampoTexto disabled ">
+			
+			
+		
+	
+	
+	
+		
+	    
+    
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+
+						
+					
+				
+					
+						
+						
+						
+						
+						
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		
+		
+			
+				
+				<tr id="DOCDELEG" class="">
+			
+		
+		
+		
+		  <td id="" width="150" valign="">
+			
+			  
+		  	  
+		      
+				
+		  	    <div class="" style="text-align:right;font-weight:bold;;">Nº na delegacia:</div>
+		      
+		    
+		  </td>
+		
+		
+		
+		  
+		  
+		    <td valign="">
+		  
+		
+			
+	
+	
+	
+	
+	
+	
+			
+				<input type="text" name="dadosConsulta.valorConsulta" size="" value="05272057961" formatType="TEXT" formato="100" obrigatorio="false" rotulo="Nº na delegacia" onkeypress="CT_KPS(this, event);" onblur="CT_BLR(this);" onkeydown="CT_KDN(this, event);" onmousemove="CT_MMOV(this, event);" onmouseout="CT_MOUT(this, event);" onmouseover="CT_MOV(this, event);" onfocus="C_OFC(this, event);" disabled="disabled" style="" class="spwCampoTexto disabled ">
+			
+			
+		
+	
+	
+	
+		
+	    
+    
+	
+	
+	
+	
+		
+		</td>
+		
+			</tr>
+		
+	
+	
+
+
+
+
+						
+					
+				
+				
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			  	
+			  	
+			  	
+		
+		</table>
+	</div>
+	
+	
+	
+
+
+	  	
+
+
+
+
+
+
+
+
+
+	<table id="" class="secaoBotoesBody" width="100%" cellpadding="2" cellspacing="0" border="0">
+		<tr>
+ 			
+ 				<td width="150">&nbsp;</td>
+ 			
+			<td align="">
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+	<input type="submit" name="pbEnviar" value="Pesquisar" onclick="" onmouseover="B_mOver(this);" onmouseout="B_mOut(this);" onmouseover="B_mOver(this);" onmouseout="B_mOut(this);" class="spwBotaoDefault" id="pbEnviar">
+
+		  	
+	  	
+			</td>
+		</tr>
+	</table>
+
+		
+	
+</form>
+
+
+
+
+			</form>     
+	   	
+		
+			
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+<table style="padding: 4px; margin-top: 20px; " id="paginacaoSuperior" width="100%" border="0" cellspacing="0" cellpadding="0" >
+	<tr height="20">
+		<td bgcolor="#EEEEEE">
+			<input name="action" type="hidden" value="/trocarPagina.do?conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc" />
+			<input name="divConteudo" type="hidden" value="" />
+			Resultados
+			<strong>
+				1 a 2
+			</strong>
+			de 2
+		</td>
+			
+		<td bgcolor="#EEEEEE" align="right">
+		<div style="padding-left: 4px;">
+		
+
+		
+		
+		
+		
+			
+		
+		
+			
+				
+					<span style="padding: 5px;" class="paginaAtual" >
+						1
+					</span>
+				
+				
+			
+		
+
+		
+
+		</div>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td height="1" bgcolor="#999999" colspan="2"></td>
+	</tr>
+</table>
+
+			<div id="listagemDeProcessos" >
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			
+		
+		
+	
+	
+	
+	
+		
+			
+		
+		
+	
+	
+    	
+		<div style="padding:0px 10px;" >
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+			
+		
+		
+	
+	
+	<div class="">
+		
+			<br/>
+						
+			
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top">
+	   <td height="21" valign="top" nowrap background="/cpopg/imagens/spw/fundo_subtitulo.gif" class="subtitle"> Bom Retiro </td>
+    <td background="/cpopg/imagens/spw/fundo_subtitulo2.gif" width="90%">
+      <img src="/cpopg/imagens/spw/final_subtitulo.gif" width="16" height="20"></td>
+  </tr>
+</table>	
+			<br/>
+		
+		<table id="" class="secaoFormBody" width="100%" cellpadding="2" cellspacing="0" border="0">
+				
+		</table>
+	</div>
+	
+	
+	
+
+
+		</div>
+    
+	<div id="divProcesso090000EKL0000" class="fundoClaro" style="margin-left: 10px; margin-top: 0px;" >
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+   
+
+   	
+   		
+   		
+   		
+   	
+   	 
+
+
+
+	
+	
+		
+		
+			
+		
+	
+	
+
+   	
+<div class="fundoClaro" >    
+    <div class="nuProcesso"> 
+		
+
+
+
+<!-- Atributos -->
+
+
+
+
+
+
+
+	
+
+
+
+	
+		<a href="/cpopg/show.do?processo.codigo=090000EKL0000&processo.foro=9&conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc&paginaConsulta=1" class="linkProcesso">
+			0000880-39.2011.8.24.0009   
+		</a>
+		<span class="" >
+			(009.11.000880-2)
+		</span>
+	
+	
+
+	
+	</div>				      
+    &nbsp;Execução de Título Extrajudicial&nbsp;<b>/</b>&nbsp;Cheque 
+    <br/>
+    
+	    <div class="espacamentoLinhas">
+	    	<span style="font-weight: bold" >Executado:</span>
+	    	Luiz Fernando Rosa
+		    
+		    	&nbsp;CPF  052.720.579-61
+		    
+        </div>
+    
+    
+    
+       
+	<div class="espacamentoLinhas" >
+  		<span style="font-weight: bold" >Recebido em:</span>
+ 		27/05/2011 - Vara Única
+    </div>	    
+  	
+  	
+  	
+	
+ </div>
+
+		 
+	</div>
+
+	
+		
+		
+			
+		
+	
+	
+	
+	
+		
+			
+		
+		
+	
+	
+    	
+		<div style="padding:0px 10px;" >
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+			
+		
+		
+	
+	
+	<div class="">
+		
+			<br/>
+						
+			
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top">
+	   <td height="21" valign="top" nowrap background="/cpopg/imagens/spw/fundo_subtitulo.gif" class="subtitle"> Palhoça </td>
+    <td background="/cpopg/imagens/spw/fundo_subtitulo2.gif" width="90%">
+      <img src="/cpopg/imagens/spw/final_subtitulo.gif" width="16" height="20"></td>
+  </tr>
+</table>	
+			<br/>
+		
+		<table id="" class="secaoFormBody" width="100%" cellpadding="2" cellspacing="0" border="0">
+				
+		</table>
+	</div>
+	
+	
+	
+
+
+		</div>
+    
+	<div id="divProcesso1900042KD0000" class="fundoEscuro" style="margin-left: 10px; margin-top: 12px;" >
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+   
+
+   	
+   		
+   		
+   		
+   	
+   	 
+
+
+
+	
+	
+		
+		
+			
+		
+	
+	
+
+   	
+<div class="fundoEscuro" >    
+    <div class="nuProcesso"> 
+		
+
+
+
+<!-- Atributos -->
+
+
+
+
+
+
+
+	
+
+
+
+	
+		<a href="/cpopg/show.do?processo.codigo=1900042KD0000&processo.foro=45&conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc&paginaConsulta=1" class="linkProcesso">
+			0007720-20.2012.8.24.0045   
+		</a>
+		<span class="" >
+			(045.12.007720-0)
+		</span>
+	
+	
+
+	
+	</div>				      
+    &nbsp;Monitória&nbsp;<b>/</b>&nbsp;Cheque 
+    <br/>
+    
+	    <div class="espacamentoLinhas">
+	    	<span style="font-weight: bold" >Réu:</span>
+	    	Luiz Fernando Rosa
+		    
+		    	&nbsp;CPF  052.720.579-61
+		    
+        </div>
+    
+    
+    
+       
+	<div class="espacamentoLinhas" >
+  		<span style="font-weight: bold" >Recebido em:</span>
+ 		06/07/2012 - 1ª Vara Cível
+    </div>	    
+  	
+  	
+  	
+	
+ </div>
+
+		 
+	</div>
+
+
+			</div>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+<table style="padding: 4px; margin-top: 20px; " id="paginacaoInferior" width="100%" border="0" cellspacing="0" cellpadding="0" >
+	<tr height="20">
+		<td bgcolor="#EEEEEE">
+			<input name="action" type="hidden" value="/trocarPagina.do?conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc" />
+			<input name="divConteudo" type="hidden" value="" />
+			Resultados
+			<strong>
+				1 a 2
+			</strong>
+			de 2
+		</td>
+			
+		<td bgcolor="#EEEEEE" align="right">
+		<div style="padding-left: 4px;">
+		
+
+		
+		
+		
+		
+			
+		
+		
+			
+				
+					<span style="padding: 5px;" class="paginaAtual" >
+						1
+					</span>
+				
+				
+			
+		
+
+		
+
+		</div>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td height="1" bgcolor="#999999" colspan="2"></td>
+	</tr>
+</table>
+
+		
+		
+		
+  	
+	        
+
+
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+
+		</td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="esajTabelaRodape" summary=" ">
+	<tr>
+		<td class="esajCelulaRodapeCentro">
+		   Desenvolvido pela Softplan em parceria com o Tribunal de Justiça de Santa Catarina
+		   
+		</td>
+	</tr>
+</table>
+	
+
+
+  
+	
+	
+
+
+
+	
+
+
+</body>
+  
+
+</html>
+
+
+
