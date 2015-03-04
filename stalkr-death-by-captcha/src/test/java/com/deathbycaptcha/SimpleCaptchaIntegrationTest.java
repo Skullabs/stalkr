@@ -16,7 +16,7 @@ import com.deathbycaptcha.Client;
 import com.deathbycaptcha.Exception;
 import com.deathbycaptcha.SocketClient;
 
-public class SimpleCaptchaTest {
+public class SimpleCaptchaIntegrationTest {
 
 	final String username = System.getProperty( "dbc-username" );
 	final String password = System.getProperty( "dbc-password" );

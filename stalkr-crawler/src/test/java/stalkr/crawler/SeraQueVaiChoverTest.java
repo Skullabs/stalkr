@@ -14,7 +14,7 @@ import org.junit.Test;
 import trip.spi.Provided;
 import trip.spi.ServiceProvider;
 
-public class SeraQueVaiChoverIntegrationTest {
+public class SeraQueVaiChoverTest {
 
 	@Provided
 	JobRunner runner;

@@ -10,7 +10,7 @@
 
 	<groupId>io.skullabs.stalkr</groupId>
 	<artifactId>stalkr-parent</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<name>Stalkr: The crawler took kit for Java</name>
 	<packaging>pom</packaging>
 
@@ -67,7 +67,25 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.10.1</version>
+					<inherited>true</inherited>
+					<configuration>
+						<show>private</show>
+						<nohelp>true</nohelp>
+						<excludePackageNames>org.base64,com.deathbycaptcha,org.json</excludePackageNames>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 	<url>https://github.com/Skullabs/stalkr</url>
 
 	<licenses>
