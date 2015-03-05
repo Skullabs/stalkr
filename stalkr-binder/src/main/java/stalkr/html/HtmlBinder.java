@@ -9,6 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import stalkr.html.parser.BindableClass;
+import stalkr.html.parser.BindableClassFactory;
 import trip.spi.Provided;
 import trip.spi.Singleton;
 

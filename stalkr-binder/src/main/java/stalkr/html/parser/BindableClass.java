@@ -1,4 +1,4 @@
-package stalkr.html;
+package stalkr.html.parser;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -14,7 +14,7 @@ import org.jsoup.nodes.Element;
  * @author Miere Teixeira
  */
 @RequiredArgsConstructor
-class BindableClass {
+public class BindableClass {
 
 	final Class<?> type;
 	final List<Setter> values;

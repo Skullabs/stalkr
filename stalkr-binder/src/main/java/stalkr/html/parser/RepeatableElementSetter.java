@@ -1,13 +1,12 @@
-package stalkr.html;
+package stalkr.html.parser;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.List;
 
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 @RequiredArgsConstructor
 public class RepeatableElementSetter implements Setter {
@@ -19,9 +18,9 @@ public class RepeatableElementSetter implements Setter {
 	@Override
 	public void bind( final Element document, final Object instance ) {
 		try {
-			final Elements elements = document.select( selector );
-			final List<Object> list = new ArrayList<Object>();
-			for ( final Element element : elements )
+			val elements = document.select( selector );
+			val list = new ArrayList<Object>();
+			for ( val element : elements )
 				list.add( createNewBinddedDataFromModelClass( element ) );
 			field.set( instance, list );
 		} catch ( IllegalArgumentException | IllegalAccessException e ) {
