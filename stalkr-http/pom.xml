@@ -17,9 +17,5 @@
 			<groupId>com.ning</groupId>
 			<artifactId>async-http-client</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.typesafe</groupId>
-			<artifactId>config</artifactId>
-		</dependency>
 	</dependencies>
 </project>
