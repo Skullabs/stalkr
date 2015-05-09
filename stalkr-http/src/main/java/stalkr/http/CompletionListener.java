@@ -12,7 +12,7 @@ public interface CompletionListener<T> {
 
 	/**
 	 * @param requests
-	 *            a {@link Request} keeping data ( Cookies, etc ) from the
+	 *            a {@link Requests} keeping data ( Cookies, etc ) from the
 	 *            current session, and ready to make another requests. It could
 	 *            be {@code null} if the current request have thrown a timeout
 	 *            related exception.
