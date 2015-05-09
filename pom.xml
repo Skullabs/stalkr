@@ -10,7 +10,7 @@
 
 	<groupId>io.skullabs.stalkr</groupId>
 	<artifactId>stalkr-parent</artifactId>
-	<version>0.2.1</version>
+	<version>0.2.2</version>
 	<name>Stalkr: The crawler took kit for Java</name>
 	<packaging>pom</packaging>
 

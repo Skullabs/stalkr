@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import lombok.val;
 
-import com.ning.http.client.AsyncCompletionHandlerBase;
+// import com.ning.http.client.AsyncCompletionHandlerBase;
 import com.ning.http.client.AsyncHandler;
 import com.ning.http.client.RequestBuilderBase;
 import com.ning.http.client.Response;
@@ -19,7 +19,7 @@ public class ListenableRequestBuilder extends RequestBuilderBase<ListenableReque
 	}
 
 	public ListenableRequestBuilder execute( final CompletionListener<Response> listener ) throws IOException {
-		return execute( new AsyncCompletionHandlerBase(), listener );
+		return execute( new AsyncCompletionHandlerBase( listener ), listener );
 	}
 
 	public <T> ListenableRequestBuilder execute( final AsyncHandler<T> handler, final CompletionListener<T> listener ) throws IOException {
