@@ -51,12 +51,12 @@
 			<dependency>
 				<groupId>io.skullabs.trip</groupId>
 				<artifactId>trip-core</artifactId>
-				<version>1.2.3</version>
+				<version>1.2.4</version>
 			</dependency>
 			<dependency>
 				<groupId>io.skullabs.trip</groupId>
 				<artifactId>trip-processor</artifactId>
-				<version>1.2.3</version>
+				<version>1.2.4</version>
 				<scope>provided</scope>
 			</dependency>
 
