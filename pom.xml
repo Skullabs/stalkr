@@ -4,7 +4,7 @@
 
 	<groupId>io.skullabs.stalkr</groupId>
 	<artifactId>stalkr-parent</artifactId>
-	<version>0.2.2</version>
+	<version>0.2.3</version>
 	<name>Stalkr: The crawler took kit for Java</name>
 	<packaging>pom</packaging>
 
@@ -59,7 +59,11 @@
 				<version>1.2.4</version>
 				<scope>provided</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1</version>
+			</dependency>
 			<!-- modules as depencency -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
@@ -98,6 +102,11 @@
 			<version>${version.mockito}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.skullabs.trip</groupId>
+			<artifactId>trip-processor</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- Compile time dependencies -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -106,8 +115,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.skullabs.trip</groupId>
-			<artifactId>trip-processor</artifactId>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 		</dependency>
 	</dependencies>
 

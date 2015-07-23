@@ -8,11 +8,19 @@
 	<parent>
 		<groupId>io.skullabs.stalkr</groupId>
 		<artifactId>stalkr-parent</artifactId>
-		<version>0.2.2</version>
+		<version>0.2.3</version>
 	</parent>
-	
+
 	<artifactId>stalkr-commons</artifactId>
 	<name>Stalkr: Commons</name>
 	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.skullabs.trip</groupId>
+			<artifactId>trip-processor</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 </project>

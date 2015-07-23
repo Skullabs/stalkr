@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import lombok.val;
 
-// import com.ning.http.client.AsyncCompletionHandlerBase;
 import com.ning.http.client.AsyncHandler;
 import com.ning.http.client.RequestBuilderBase;
 import com.ning.http.client.Response;

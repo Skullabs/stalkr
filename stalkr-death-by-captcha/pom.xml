@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.skullabs.stalkr</groupId>
 		<artifactId>stalkr-parent</artifactId>
-		<version>0.2.2</version>
+		<version>0.2.3</version>
 	</parent>
 
 	<artifactId>stalkr-death-by-captcha</artifactId>
@@ -20,6 +20,11 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>stalkr-commons</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.skullabs.trip</groupId>
+			<artifactId>trip-processor</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

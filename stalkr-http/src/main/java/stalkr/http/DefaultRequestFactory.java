@@ -3,10 +3,11 @@ package stalkr.http;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.inject.Singleton;
+
 import lombok.Getter;
 import lombok.val;
 import lombok.experimental.Accessors;
-import trip.spi.Singleton;
 
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.AsyncHttpClientConfig;
@@ -14,7 +15,7 @@ import com.ning.http.client.AsyncHttpClientConfig.Builder;
 
 @Getter
 @Accessors( fluent = true )
-@Singleton( exposedAs = Requests.class )
+@Singleton
 public class DefaultRequestFactory extends Requests {
 
 	final AsyncHttpClient client = configureClient();

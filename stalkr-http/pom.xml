@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.skullabs.stalkr</groupId>
 		<artifactId>stalkr-parent</artifactId>
-		<version>0.2.2</version>
+		<version>0.2.3</version>
 	</parent>
 
 	<artifactId>stalkr-http</artifactId>
@@ -16,6 +16,10 @@
 		<dependency>
 			<groupId>com.ning</groupId>
 			<artifactId>async-http-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 		</dependency>
 	</dependencies>
 </project>
