@@ -14,11 +14,11 @@ import com.ning.http.client.Response;
 
 @Log
 @RequiredArgsConstructor
-public class SeraQueVaiChoverJob implements Job {
+public class MeuIpJob implements Job {
 
-	final static String URL = "http://www.seraquevaichover.com.br";
+	final static String URL = "http://meuip.co";
 	final CountDownLatch counter;
-	String yesOrNot;
+	String ip;
 
 	@Provided
 	HtmlBinder binder;
@@ -29,9 +29,9 @@ public class SeraQueVaiChoverJob implements Job {
 	}
 
 	public void handleResponse( final Requests requester, final Response result ) throws IOException {
-		val binded = binder.bind( result.getResponseBody(), SeraQueVaiChover.class );
-		yesOrNot = binded.getYesOrNot();
+		val binded = binder.bind( result.getResponseBody(), MeuIp.class );
+		ip = binded.getIp();
 		counter.countDown();
-		log.info( "Response received: " + yesOrNot );
+		log.info( "Response received: " + ip );
 	}
 }

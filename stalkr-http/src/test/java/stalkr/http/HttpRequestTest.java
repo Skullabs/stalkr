@@ -7,17 +7,25 @@ import lombok.SneakyThrows;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import trip.spi.Provided;
 import trip.spi.ServiceProvider;
 
 import com.ning.http.client.Response;
 
+@RunWith(MockitoJUnitRunner.class)
 public class HttpRequestTest {
 
 	@Provided
 	Requests requests;
 
+	@Mock
+	CompletionListener<Response> listener;
+	
 	@Test( timeout = 20000 )
 	@SneakyThrows
 	public void ensureThatCouldRequestSomething() {
@@ -48,6 +56,23 @@ public class HttpRequestTest {
 	public interface ThrowableRunnable {
 		void run() throws Exception;
 	}
+	
+	@Test
+	@SneakyThrows
+	public void testUniqueListenerCall(){
+		requests.get("http://www.google.com").execute(listener);
+		Thread.sleep( 1000 );
+		Mockito.verify(listener, Mockito.times(1)).onComplete(Mockito.any(), Mockito.any());
+	}
+	
+	@Test
+	@SneakyThrows
+	public void testUniqueListenerCallOnError(){
+		requests.get("http://notfoundsite.xxx.yyy").execute(listener);
+		Thread.sleep( 1000 );
+		Mockito.verify(listener, Mockito.times(1)).onComplete(Mockito.any(), Mockito.any());
+	}
+	
 }
 
 @RequiredArgsConstructor

@@ -14,6 +14,7 @@ import com.ning.http.client.Response;
 @RequiredArgsConstructor
 public class AsyncCompletionHandlerBase extends AsyncCompletionHandler<Response> {
 
+	final ContextualRequests requests;
 	final CompletionListener<Response> listener;
 
 	/**
@@ -21,19 +22,25 @@ public class AsyncCompletionHandlerBase extends AsyncCompletionHandler<Response>
 	 */
 	@Override
 	public Response onCompleted( Response response ) throws Exception {
+		onComplete(response);
 		return response;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
-	/* @Override */
+	@Override
 	public void onThrowable( Throwable t ) {
 		log.warn( t.getMessage(), t );
+		onComplete(null);
+	}
+	
+	private void onComplete(final Response response){
 		try {
-			listener.onComplete( null, null );
-		} catch ( Exception e ) {
+			listener.onComplete( requests, response );
+		} catch ( Throwable e ) {
 			log.error( e.getMessage(), e );
 		}
 	}
+
 }

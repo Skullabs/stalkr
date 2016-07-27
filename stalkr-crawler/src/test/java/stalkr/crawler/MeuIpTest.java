@@ -14,19 +14,19 @@ import org.junit.Test;
 import trip.spi.Provided;
 import trip.spi.ServiceProvider;
 
-public class SeraQueVaiChoverTest {
+public class MeuIpTest {
 
 	@Provided
 	JobRunner runner;
 
 	@SneakyThrows
-	@Test( timeout = 20000 )
+	@Test( timeout = 5000000 )
 	public void ensureThatCouldDownloadThePendenciesList() {
 		val counter = new CountDownLatch( 1 );
-		val tjSc = spy( new SeraQueVaiChoverJob( counter ) );
+		val tjSc = spy( new MeuIpJob( counter ) );
 		runner.run( tjSc );
 		counter.await();
-		assertEquals( "não", tjSc.yesOrNot );
+		assertTrue( tjSc.ip.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}.\\d{1,3}") );
 	}
 
 	@Before

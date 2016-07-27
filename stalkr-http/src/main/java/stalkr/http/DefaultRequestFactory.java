@@ -29,10 +29,10 @@ public class DefaultRequestFactory extends Requests {
 
 	AsyncHttpClientConfig createHttpClientConfig() {
 		return new Builder()
-			.setCompressionEnabled( true )
-			.setAllowPoolingConnection( true )
+			.setCompressionEnforced( true )
+			.setAllowPoolingConnections( true )
 			.setExecutorService( executor )
-			.setRequestTimeoutInMs( 30000 )
+			.setRequestTimeout( 30000 )
 			.build();
 	}
 

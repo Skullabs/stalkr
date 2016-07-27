@@ -4,8 +4,8 @@ import lombok.Data;
 import stalkr.html.BindableText;
 
 @Data
-public class SeraQueVaiChover {
+public class MeuIp {
 
-	@BindableText( "#resposta p" )
-	String yesOrNot;
+	@BindableText( "span.tx_vermelho_30" )
+	String ip;
 }
