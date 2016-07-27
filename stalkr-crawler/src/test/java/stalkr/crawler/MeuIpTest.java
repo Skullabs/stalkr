@@ -20,7 +20,7 @@ public class MeuIpTest {
 	JobRunner runner;
 
 	@SneakyThrows
-	@Test( timeout = 5000000 )
+	@Test( timeout = 10000 )
 	public void ensureThatCouldDownloadThePendenciesList() {
 		val counter = new CountDownLatch( 1 );
 		val tjSc = spy( new MeuIpJob( counter ) );
