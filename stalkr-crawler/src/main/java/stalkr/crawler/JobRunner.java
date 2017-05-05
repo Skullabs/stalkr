@@ -1,25 +1,28 @@
 package stalkr.crawler;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import kikaha.core.cdi.DefaultCDI;
+import kikaha.core.cdi.ProviderContext;
 import stalkr.http.Requests;
-import trip.spi.Provided;
-import trip.spi.ServiceProvider;
-import trip.spi.Singleton;
 
 @Singleton
 public class JobRunner {
 
-	@Provided
-	ServiceProvider provider;
+	@Inject
+	ProviderContext provider;
 
-	@Provided
+	@Inject
 	Requests requester;
 
-	@Provided
+	@Inject
 	ErrorHandler errorHandler;
 
 	public void run( final Job job ) {
 		try {
-			provider.provideOn( job );
+			//XXX: verificar se esta é a forma correta de injetar as dependencias...
+			new DefaultCDI().injectOn( job );
 			job.run( requester );
 		} catch ( final Exception cause ) {
 			errorHandler.handle( cause );

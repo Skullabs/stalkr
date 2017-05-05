@@ -1,22 +1,23 @@
 package stalkr.crawler;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.spy;
 
 import java.util.concurrent.CountDownLatch;
 
+import javax.inject.Inject;
+
+import kikaha.core.test.KikahaRunner;
 import lombok.SneakyThrows;
 import lombok.val;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import trip.spi.Provided;
-import trip.spi.ServiceProvider;
-
+@RunWith( KikahaRunner.class )
 public class MeuIpTest {
 
-	@Provided
+	@Inject
 	JobRunner runner;
 
 	@SneakyThrows
@@ -29,9 +30,4 @@ public class MeuIpTest {
 		assertTrue( tjSc.ip.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}.\\d{1,3}") );
 	}
 
-	@Before
-	@SneakyThrows
-	public void provideDependencies() {
-		new ServiceProvider().provideOn( this );
-	}
 }

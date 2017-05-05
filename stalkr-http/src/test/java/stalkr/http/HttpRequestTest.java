@@ -2,6 +2,9 @@ package stalkr.http;
 
 import java.util.concurrent.CountDownLatch;
 
+import javax.inject.Inject;
+
+import kikaha.core.test.KikahaRunner;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -10,17 +13,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import trip.spi.Provided;
-import trip.spi.ServiceProvider;
+import org.mockito.MockitoAnnotations;
 
 import com.ning.http.client.Response;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith( KikahaRunner.class )
 public class HttpRequestTest {
 
-	@Provided
+	@Inject
 	Requests requests;
 
 	@Mock
@@ -42,7 +42,7 @@ public class HttpRequestTest {
 	@SneakyThrows
 	public void provideDependencies()
 	{
-		new ServiceProvider().provideOn( this );
+		MockitoAnnotations.initMocks( this );
 	}
 
 	public void printTime( final ThrowableRunnable runnable ) throws Exception

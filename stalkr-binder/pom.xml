@@ -22,8 +22,8 @@
 			<artifactId>jsoup</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.skullabs.trip</groupId>
-			<artifactId>trip-processor</artifactId>
+			<groupId>io.skullabs.kikaha</groupId>
+			<artifactId>kikaha-injection-processor</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -5,17 +5,18 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.enterprise.inject.Produces;
+import javax.inject.Singleton;
+
+import kikaha.core.cdi.ProviderContext;
 import lombok.val;
-import trip.spi.Producer;
-import trip.spi.ProviderContext;
-import trip.spi.Singleton;
 
 @Singleton
 public class ExecutorServiceProducer {
 
 	final Map<String, ExecutorService> executors = new HashMap<>();
 
-	@Producer
+	@Produces
 	public ExecutorService produceExecutorService( final ProviderContext context ) {
 		val name = retrieveNameFrom( context );
 		val executor = retrieveOrCreateExecutorForName( name );

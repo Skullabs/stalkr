@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.inject.Singleton;
+
 import lombok.val;
 import stalkr.html.BindableAttribute;
 import stalkr.html.BindableAttributes;
 import stalkr.html.BindableManyTimes;
 import stalkr.html.BindableText;
 import stalkr.html.BindableTexts;
-import trip.spi.Singleton;
 
 @Singleton
 public class BindableClassFactory {

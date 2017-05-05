@@ -3,6 +3,7 @@ package stalkr.commons;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.doReturn;
+import kikaha.core.cdi.ProviderContext;
 import lombok.val;
 
 import org.junit.Before;
@@ -10,8 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import trip.spi.ProviderContext;
 
 @RunWith( MockitoJUnitRunner.class )
 public class ExecutorServiceProducerTest {

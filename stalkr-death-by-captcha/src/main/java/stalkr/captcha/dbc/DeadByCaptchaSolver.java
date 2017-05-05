@@ -2,11 +2,12 @@ package stalkr.captcha.dbc;
 
 import java.util.concurrent.ExecutorService;
 
+import javax.inject.Inject;
+
+import kikaha.core.cdi.Stateless;
 import lombok.RequiredArgsConstructor;
 import stalkr.commons.Name;
 import stalkr.crawler.ErrorHandler;
-import trip.spi.Provided;
-import trip.spi.Stateless;
 
 import com.deathbycaptcha.Captcha;
 import com.deathbycaptcha.Client;
@@ -14,14 +15,14 @@ import com.deathbycaptcha.Client;
 @Stateless
 public class DeadByCaptchaSolver {
 
-	@Provided
+	@Inject
 	Client client;
 
-	@Provided
+	@Inject
 	@Name( "captcha-client-thread-pool" )
 	ExecutorService executor;
 
-	@Provided
+	@Inject
 	ErrorHandler errorHandler;
 
 	public void solve( final byte[] inputStream, final SolverCallback callback ) {

@@ -9,21 +9,22 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import kikaha.core.test.KikahaRunner;
 import lombok.SneakyThrows;
 import lombok.val;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import trip.spi.Provided;
-import trip.spi.ServiceProvider;
-
+@RunWith( KikahaRunner.class )
 public class HtmlBinderTest {
 
 	private static final String LINK_FIRST_SUE = "/cpopg/show.do?processo.codigo=090000EKL0000&processo.foro=9&conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc&paginaConsulta=1";
 	private static final String LINK_SECOND_SUE = "/cpopg/show.do?processo.codigo=1900042KD0000&processo.foro=45&conversationId=&dadosConsulta.localPesquisa.cdLocal=-1&cbPesquisa=DOCPARTE&dadosConsulta.tipoNuProcesso=UNIFICADO&dadosConsulta.valorConsulta=05272057961&vlCaptcha=tkcpc&paginaConsulta=1";
 
-	@Provided
+	@Inject
 	HtmlBinder binder;
 
 	@Test
@@ -93,9 +94,4 @@ public class HtmlBinderTest {
 		return new String( allBytes );
 	}
 
-	@Before
-	@SneakyThrows
-	public void provideDependencies() {
-		new ServiceProvider().provideOn( this );
-	}
 }

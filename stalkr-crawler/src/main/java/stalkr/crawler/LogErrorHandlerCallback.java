@@ -1,10 +1,11 @@
 package stalkr.crawler;
 
+import javax.inject.Singleton;
+
 import lombok.extern.java.Log;
-import trip.spi.Singleton;
 
 @Log
-@Singleton( exposedAs = ErrorHandler.class )
+@Singleton
 public class LogErrorHandlerCallback implements ErrorHandler {
 
 	@Override

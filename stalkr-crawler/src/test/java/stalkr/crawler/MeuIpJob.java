@@ -3,12 +3,13 @@ package stalkr.crawler;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
+import javax.inject.Inject;
+
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import lombok.extern.java.Log;
 import stalkr.html.HtmlBinder;
 import stalkr.http.Requests;
-import trip.spi.Provided;
 
 import com.ning.http.client.Response;
 
@@ -20,7 +21,7 @@ public class MeuIpJob implements Job {
 	final CountDownLatch counter;
 	String ip;
 
-	@Provided
+	@Inject
 	HtmlBinder binder;
 
 	@Override
