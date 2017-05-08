@@ -85,6 +85,15 @@ public class HtmlBinderTest {
 		assertEquals( "stalkr - The crawler took kit for Java", bookmark.description() );
 		assertEquals( "https://avatars3.githubusercontent.com/u/7440531?v=3&s=400", bookmark.picture() );
 	}
+	
+	@Test
+	public void ensureThatCouldRetrieveDataThroughEmbeddedAnnotations() {
+		val data = readFile( "person-infopage.html" );
+		val person = binder.bind( data, Person.class );
+		assertEquals( "Adriana", person.getName() );
+		assertEquals( "Cafelandia", person.getAdress().getCity() );
+		assertEquals( "89898-000", person.getAdress().getPostalCode() );
+	}
 
 	@SneakyThrows
 	private String readFile( String fileName ) {

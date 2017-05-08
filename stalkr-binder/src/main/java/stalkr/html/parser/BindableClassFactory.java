@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 import lombok.val;
 import stalkr.html.BindableAttribute;
 import stalkr.html.BindableAttributes;
+import stalkr.html.BindableEmbedded;
 import stalkr.html.BindableManyTimes;
 import stalkr.html.BindableText;
 import stalkr.html.BindableTexts;
@@ -21,7 +22,7 @@ public class BindableClassFactory {
 
 	final Map<Class<?>, BindableClass> cache = new ConcurrentHashMap<>();
 	final List<FieldParser<?>> fieldParsers = Arrays.asList(
-			bindableTexts(), bindableText(), bindableAttributes(), bindableAttribute(), bindableManyTimes() );
+			bindableTexts(), bindableText(), bindableAttributes(), bindableAttribute(), bindableManyTimes(), bindableEmbedded() );
 
 	/**
 	 * @param type
@@ -106,4 +107,13 @@ public class BindableClassFactory {
 					return new RepeatableElementSetter( annotation.selector(), field, bindableClass );
 				} );
 	}
+	
+	FieldParser<BindableEmbedded> bindableEmbedded() {
+		return FieldParser.of( BindableEmbedded.class,
+				( field, annotation ) -> {
+					final BindableClass bindableClass = getBindableClassFor( field.getType() );
+					return new EmbeddedElementSetter( annotation.value(), field, bindableClass );
+				} );
+	}
+	
 }
