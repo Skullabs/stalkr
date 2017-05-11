@@ -13,13 +13,14 @@ public class AttributeElementSetter implements Setter {
 	final Field field;
 	final String selector;
 	final String attribute;
+	final ValueParser valueParser;
 
 	@Override
 	public void bind( final Element document, final Object instance ) {
 		try {
 			val element = document.select( selector ).first();
 			if ( element != null )
-				field.set( instance, element.attr( attribute ) );
+				field.set( instance, valueParser.parse( element.attr( attribute ) ) );
 		} catch ( IllegalArgumentException | IllegalAccessException e ) {
 			throw new RuntimeException( e );
 		}
