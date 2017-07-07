@@ -71,6 +71,26 @@ class ManyTimesClassExample {
 }
 ```
 
+## Supported types
+
+String, Integer, Long, Float, Double, Date and Time
+
+For date/time is used "dd/MM/yyyy" and "HH:mm:ss" pattern, but you can change it:
+
+```java
+class CustomPatternsExample {
+
+    @stalkr.html.DatePattern( "yyyy-MM-dd" ) // <- your pattern here
+    @stalkr.html.BindableText( "p#date" )
+    Date dateExample;
+
+    @stalkr.html.DatePattern( "ss:mm:HH" ) // <- your pattern here
+    @stalkr.html.BindableText( "p#time" )
+    Time timeExample;
+
+}
+```
+
 
 ## Example
 
