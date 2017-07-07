@@ -19,27 +19,19 @@
 		<skip.unit.tests>false</skip.unit.tests>
 		<!-- Dependencies Versions -->
 		<version.junit>4.12</version.junit>
-		<version.lombok>1.16.10</version.lombok>
+		<version.lombok>1.16.16</version.lombok>
 		<version.mockito>1.10.19</version.mockito>
 		<version.maven.compiler.plugin>2.3.2</version.maven.compiler.plugin>
-		<version.kikaha>2.1.0-alpha13</version.kikaha>
+		<version.kikaha>2.1.0-alpha23</version.kikaha>
 	</properties>
 
 	<modules>
-		<module>stalkr-http</module>
 		<module>stalkr-binder</module>
-		<module>stalkr-death-by-captcha</module>
-		<module>stalkr-commons</module>
-		<module>stalkr-crawler</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>com.ning</groupId>
-				<artifactId>async-http-client</artifactId>
-				<version>1.9.38</version>
-			</dependency>
+			<!-- Project specific dependencies -->
 			<dependency>
 				<groupId>com.typesafe</groupId>
 				<artifactId>config</artifactId>
@@ -50,43 +42,17 @@
 				<artifactId>jsoup</artifactId>
 				<version>1.8.1</version>
 			</dependency>
+			<!-- Kikaha dependencies -->
 			<dependency>
                 <groupId>io.skullabs.kikaha</groupId>
                 <version>${version.kikaha}</version>
                 <artifactId>kikaha-injection</artifactId>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.skullabs.kikaha</groupId>
-                <version>${version.kikaha}</version>
-                <artifactId>kikaha-injection-processor</artifactId>
-                <scope>provided</scope>
             </dependency>
 			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1</version>
-			</dependency>
-			<!-- modules as depencency -->
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<version>${project.version}</version>
-				<artifactId>stalkr-commons</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<version>${project.version}</version>
-				<artifactId>stalkr-http</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<version>${project.version}</version>
-				<artifactId>stalkr-binder</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<version>${project.version}</version>
-				<artifactId>stalkr-crawler</artifactId>
+				<groupId>io.skullabs.kikaha</groupId>
+				<artifactId>kikaha-injection-processor</artifactId>
+				<version>${version.kikaha}</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -117,10 +83,6 @@
 			<artifactId>lombok</artifactId>
 			<version>${version.lombok}</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -300,6 +262,11 @@
 			<id>miere</id>
 			<email>miere.teixeira@gmail.com</email>
 			<name>Miere Liniel Teixeira</name>
+		</developer>
+		<developer>
+			<id>ronei</id>
+			<email>ronei_vinicius@hotmail.com</email>
+			<name>Ronei Vinicius Gebert</name>
 		</developer>
 	</developers>
 
