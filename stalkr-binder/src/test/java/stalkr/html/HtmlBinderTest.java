@@ -12,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -103,6 +105,24 @@ public class HtmlBinderTest {
 	public void ensureThatCouldRetrieveDataForAnyTypes() throws ParseException {
 		val data = readFile( "any-data-types.html" );
 		val dataTypes = binder.bind( data, DataTypes.class );
+		assertEquals( 10, dataTypes.getIntegerText(), 0 );
+		assertEquals( 11, dataTypes.getIntegerAttr(), 0 );
+		assertEquals( 100L, dataTypes.getLongText(), 0 );
+		assertEquals( 101L, dataTypes.getLongAttr(), 0 );
+		assertEquals( 51F, dataTypes.getFloatText(), 0 );
+		assertEquals( 51F, dataTypes.getFloatAttr(), 0 );
+		assertEquals( 444.12, dataTypes.getDoubleText(), 0 );
+		assertEquals( 444.12, dataTypes.getDoubleAttr(), 0 );
+		assertEquals( date("28/07/1900"), dataTypes.getDateText() );
+		assertEquals( date("28/07/1901"), dataTypes.getDateAttr() );
+		assertEquals( time("01:12:59"), dataTypes.getTimeText() );
+		assertEquals( time("18:10:00"), dataTypes.getTimeAttr() );
+	}
+
+	@Test
+	public void ensureThatCouldRetrieveDataForAnyTypesWithRegexSearch() throws ParseException {
+		val data = readFile( "any-data-types-with-regex.html" );
+		val dataTypes = binder.bind( data, DataTypesWithRegex.class );
 		assertEquals( 10, dataTypes.getIntegerText(), 0 );
 		assertEquals( 11, dataTypes.getIntegerAttr(), 0 );
 		assertEquals( 100L, dataTypes.getLongText(), 0 );

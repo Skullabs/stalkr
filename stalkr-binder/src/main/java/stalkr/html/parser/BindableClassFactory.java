@@ -11,17 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 
 import javax.inject.Singleton;
 
 import lombok.val;
-import stalkr.html.BindableAttribute;
-import stalkr.html.BindableAttributes;
-import stalkr.html.BindableEmbedded;
-import stalkr.html.BindableManyTimes;
-import stalkr.html.BindableText;
-import stalkr.html.BindableTexts;
-import stalkr.html.DatePattern;
+import stalkr.html.*;
 
 @Singleton
 public class BindableClassFactory {
@@ -125,8 +120,18 @@ public class BindableClassFactory {
 					return new EmbeddedElementSetter( annotation.value(), field, bindableClass );
 				} );
 	}
-	
+
 	ValueParser valueParseFor(Field field){
+		val valueParser = valueParseForField( field );
+		val textSearch = field.getAnnotation(BindableTextSearch.class);
+		if ( textSearch != null ) {
+			final Pattern pattern = Pattern.compile( textSearch.value() );
+			return new SearchTextValueParser(pattern, textSearch.group(), valueParser);
+		}
+		return valueParser;
+	}
+
+	ValueParser valueParseForField(Field field){
 		val parser = parsers.get( field.getType() );
 		if ( parser != null )
 			return parser;

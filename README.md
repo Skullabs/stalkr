@@ -12,7 +12,7 @@ Stalkr Binder is a simple library to bind HTML data into java objects
 <dependency>
     <groupId>io.skullabs.stalkr</groupId>
     <artifactId>stalkr-binder</artifactId>
-    <version>0.2.6</version>
+    <version>0.2.7</version>
 </dependency>
 ```
 
@@ -91,6 +91,25 @@ class CustomPatternsExample {
 }
 ```
 
+## Using regex search
+
+```java
+class FindUsingRegexPatternExample {
+
+    @stalkr.html.BindableTextSearch( "My name is .* and I'm \\d+ years old" )
+    @stalkr.html.BindableText( "p#profile-phrase" )
+    String profilePhrase;
+
+    @stalkr.html.BindableTextSearch( value = "My name is (.*) and I'm (\\d+) years old", group = 1 )
+    @stalkr.html.BindableText( "p#profile-phrase" )
+    String name;
+
+    @stalkr.html.BindableTextSearch( value = "My name is (.*) and I'm (\\d+) years old", group = 2 )
+    @stalkr.html.BindableText( "p#profile-phrase" )
+    Integer old;
+
+}
+```
 
 ## Example
 

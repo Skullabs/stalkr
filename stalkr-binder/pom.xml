@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.skullabs.stalkr</groupId>
 		<artifactId>stalkr-parent</artifactId>
-		<version>0.2.6</version>
+		<version>0.2.7</version>
 	</parent>
 
 	<artifactId>stalkr-binder</artifactId>
@@ -14,17 +14,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.typesafe</groupId>
-			<artifactId>config</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.skullabs.kikaha</groupId>
-			<artifactId>kikaha-injection-processor</artifactId>
-			<scope>provided</scope>
-		</dependency>
 	</dependencies>
+
 </project>
