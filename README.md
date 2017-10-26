@@ -12,7 +12,7 @@ Stalkr Binder is a simple library to bind HTML data into java objects
 <dependency>
     <groupId>io.skullabs.stalkr</groupId>
     <artifactId>stalkr-binder</artifactId>
-    <version>0.2.7</version>
+    <version>0.2.8</version>
 </dependency>
 ```
 
