@@ -18,11 +18,21 @@ Stalkr Binder is a simple library to bind HTML data into java objects
 
 ## Usage
 
-You can use kikaha injection:
+You can use with kikaha injection or manually using builder:
 
 ```java
 @Inject
 stalkr.html.HtmlBinder binder;
+
+// or
+
+stalkr.html.HtmlBinder binder = new stalkr.html.HtmlBinder.Builder()
+			.datePattern( "yyyy-MM-dd" ) // optional
+			.timePattern( "HH:mm" ) // optional
+			.parser( Integer.class, (text)-> Integer.valueOf(text) ) // optional custom value parser
+			.build();
+			
+...
 
 // Read your html ...
 String myHtml = readMyHtml();  // implement this for get your html...
