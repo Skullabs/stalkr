@@ -11,23 +11,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 import javax.inject.Singleton;
 
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import stalkr.html.*;
 
-@Singleton
+@RequiredArgsConstructor
 public class BindableClassFactory {
 	
 	final Map<Class<?>, BindableClass> cache = new ConcurrentHashMap<>();
 	final List<FieldParser<?>> fieldParsers = Arrays.asList(
 			bindableTexts(), bindableText(), bindableAttributes(), bindableAttribute(), bindableManyTimes(), bindableEmbedded() );
-	final Map<Class<?>, ValueParser> parsers = createValueParsers();
-	final ValueParser defaultDateParser = dateParser( "dd/MM/yyyy" );
-	final ValueParser defaultTimeParser = timeParser( "HH:mm:ss" );
-	
+	final Map<Class<?>, Function<String, Object>> parsers = createValueParsers();
+	final Function<String, Object> dateParser;
+	final Function<String, Object> timeParser;
+
 	/**
 	 * @param type
 	 * @return
@@ -121,7 +123,7 @@ public class BindableClassFactory {
 				} );
 	}
 
-	ValueParser valueParseFor(Field field){
+	Function<String, Object> valueParseFor(Field field){
 		val valueParser = valueParseForField( field );
 		val textSearch = field.getAnnotation(BindableTextSearch.class);
 		if ( textSearch != null ) {
@@ -131,7 +133,7 @@ public class BindableClassFactory {
 		return valueParser;
 	}
 
-	ValueParser valueParseForField(Field field){
+	Function<String, Object> valueParseForField(Field field){
 		val parser = parsers.get( field.getType() );
 		if ( parser != null )
 			return parser;
@@ -140,20 +142,20 @@ public class BindableClassFactory {
 			return dateParser;
 		throw new RuntimeException("No parser found for field " + field.getName() + " - " + field.getType());
 	}
-	
-	ValueParser dateOrTimeParser(Field field){
+
+	Function<String, Object> dateOrTimeParser(Field field){
 		val datePatternAnnotation = field.getAnnotation( DatePattern.class );
 		if ( Time.class.isAssignableFrom(field.getType()) ){
 			if ( datePatternAnnotation != null ) return timeParser( datePatternAnnotation.value() );
-			return defaultTimeParser;
+			return timeParser;
 		} else if ( Date.class.isAssignableFrom(field.getType()) ){
 			if ( datePatternAnnotation != null ) return dateParser( datePatternAnnotation.value() );
-			return defaultDateParser;
+			return dateParser;
 		}
 		return null;
 	}
-	
-	ValueParser dateParser(String datePattern){
+
+	static Function<String, Object> dateParser(String datePattern){
 		return (text)-> {
 			try {
 				return new SimpleDateFormat(datePattern).parse(text);
@@ -162,8 +164,8 @@ public class BindableClassFactory {
 			}
 		};
 	}
-	
-	ValueParser timeParser(String datePattern){
+
+	static Function<String, Object> timeParser(String datePattern){
 		return (text)-> {
 			try {
 				return new Time(new SimpleDateFormat(datePattern).parse(text).getTime());
@@ -173,8 +175,8 @@ public class BindableClassFactory {
 		};
 	}
 	
-	Map<Class<?>, ValueParser> createValueParsers(){
-		val map = new HashMap<Class<?>, ValueParser>();
+	Map<Class<?>, Function<String, Object>> createValueParsers(){
+		val map = new HashMap<Class<?>, Function<String, Object>>();
 		map.put(String.class, (text)-> text);
 		map.put(Integer.class, (text)-> Integer.parseInt(text));
 		map.put(Long.class, (text)-> Long.parseLong(text));
@@ -182,5 +184,34 @@ public class BindableClassFactory {
 		map.put(Float.class, (text)-> Float.parseFloat(text));
 		return map;
 	}
-	
+
+	public static class Builder {
+
+		Map<Class<?>, Function<String, Object>> customParsers = new HashMap<>();
+		String datePattern = "dd/MM/yyyy";
+		String timePattern = "HH:mm:ss";
+
+		public Builder datePattern(String pattern){
+			this.datePattern = pattern;
+			return this;
+		}
+
+		public Builder timePattern(String pattern){
+			this.timePattern = pattern;
+			return this;
+		}
+
+		public Builder parser(Class<?> type, Function<String, Object> parser){
+			this.customParsers.put(type, parser);
+			return this;
+		}
+
+		public BindableClassFactory build(){
+			val factory = new BindableClassFactory( dateParser(datePattern), timeParser(timePattern) );
+			factory.parsers.putAll( customParsers );
+			return factory;
+		}
+
+	}
+
 }

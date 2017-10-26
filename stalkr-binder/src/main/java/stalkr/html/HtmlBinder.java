@@ -1,25 +1,28 @@
 package stalkr.html;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
+import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import stalkr.html.parser.BindableClass;
 import stalkr.html.parser.BindableClassFactory;
 
+import javax.inject.Singleton;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 @Singleton
+@AllArgsConstructor
 public class HtmlBinder {
 
-	@Inject
-	BindableClassFactory factory;
+	final BindableClassFactory factory;
+
+	public HtmlBinder(){
+		this( new BindableClassFactory.Builder().build() );
+	}
 
 	public <T> T bind( final String data, final Class<T> type ) {
 		final Document document = Jsoup.parse( data );
@@ -65,4 +68,30 @@ public class HtmlBinder {
 		for ( final Element element : elements )
 			consumer.accept( element );
 	}
+
+	public static class Builder {
+
+		private BindableClassFactory.Builder factoryBuilder = new BindableClassFactory.Builder();
+
+		public Builder parser( Class<?> type, Function<String, Object> parser ){
+			factoryBuilder.parser( type, parser );
+			return this;
+		}
+
+		public Builder datePattern( String pattern ){
+			factoryBuilder.datePattern(pattern);
+			return this;
+		}
+
+		public Builder timePattern( String pattern ){
+			factoryBuilder.timePattern(pattern);
+			return this;
+		}
+
+		public HtmlBinder build(){
+			return new HtmlBinder( factoryBuilder.build() );
+		}
+
+	}
+
 }
