@@ -22,7 +22,7 @@ public class AttributeElementSetter implements Setter {
 		try {
 			val element = document.select( selector ).first();
 			if ((element == null || element.attr(attribute).isEmpty()) && isNonnull  ) {
-				throw new RuntimeException("The element is null, please make this field optional");
+				throw new RuntimeException("The element can't be null");
 			}else if((element == null || element.attr(attribute).isEmpty()) && !isNonnull  ) {
 				return;
 			}

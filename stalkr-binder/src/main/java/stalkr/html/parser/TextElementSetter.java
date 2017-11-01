@@ -22,7 +22,7 @@ public class TextElementSetter implements Setter {
 			final Element selected = document.select( selector ).first();
 			val value = selected.text();
 			if(value.isEmpty() && isNonnull)
-				throw new RuntimeException("The element is null, please make this field optional");
+				throw new RuntimeException("The element can't be null");
 			else if(value.isEmpty() && !isNonnull)
 				return;
 			field.set( instance, valueParser.apply(value) );
