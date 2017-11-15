@@ -4,7 +4,7 @@
 
 	<groupId>io.skullabs.stalkr</groupId>
 	<artifactId>stalkr-parent</artifactId>
-	<version>0.2.8</version>
+	<version>0.3.0</version>
 	<name>Stalkr</name>
 	<description>The crawler took kit for Java</description>
 	<packaging>pom</packaging>
@@ -22,7 +22,7 @@
 		<version.lombok>1.16.16</version.lombok>
 		<version.mockito>1.10.19</version.mockito>
 		<version.maven.compiler.plugin>2.3.2</version.maven.compiler.plugin>
-		<version.kikaha>2.1.1.Final</version.kikaha>
+		<version.kikaha>2.1.2.Final</version.kikaha>
         <version.jsr305>3.0.2</version.jsr305>
 	</properties>
 
