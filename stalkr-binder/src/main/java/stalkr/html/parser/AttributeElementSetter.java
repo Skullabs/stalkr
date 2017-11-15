@@ -15,13 +15,18 @@ public class AttributeElementSetter implements Setter {
 	final String selector;
 	final String attribute;
 	final Function<String, Object> valueParser;
+	final boolean isNonnull;
 
 	@Override
 	public void bind( final Element document, final Object instance ) {
 		try {
 			val element = document.select( selector ).first();
-			if ( element != null )
-				field.set( instance, valueParser.apply( element.attr( attribute ) ) );
+			if ((element == null || element.attr(attribute).isEmpty()) && isNonnull  ) {
+				throw new RuntimeException("The element can't be null");
+			}else if((element == null || element.attr(attribute).isEmpty()) && !isNonnull  ) {
+				return;
+			}
+			field.set(instance, valueParser.apply(element.attr(attribute)));
 		} catch ( IllegalArgumentException | IllegalAccessException e ) {
 			throw new RuntimeException( e );
 		}

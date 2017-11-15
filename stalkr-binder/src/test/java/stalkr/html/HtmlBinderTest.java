@@ -2,6 +2,7 @@ package stalkr.html;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.nio.file.Files;
@@ -12,8 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -135,6 +134,30 @@ public class HtmlBinderTest {
 		assertEquals( date("28/07/1901"), dataTypes.getDateAttr() );
 		assertEquals( time("01:12:59"), dataTypes.getTimeText() );
 		assertEquals( time("18:10:00"), dataTypes.getTimeAttr() );
+	}
+
+	@Test
+	public void ensureThatNotThrowExceptionForEmptyValue() throws ParseException {
+		val data = readFile("empty-any-data-types.html");
+		val dataTypes = binder.bind( data, DataTypes.class );
+		assertNull( dataTypes.getIntegerText() );
+		assertNull( dataTypes.getIntegerAttr());
+		assertNull( dataTypes.getLongText());
+		assertNull( dataTypes.getLongAttr());
+		assertNull( dataTypes.getFloatText() );
+		assertNull( dataTypes.getFloatAttr() );
+		assertNull( dataTypes.getDoubleText() );
+		assertNull( dataTypes.getDoubleAttr() );
+		assertNull( dataTypes.getDateText() );
+		assertNull( dataTypes.getDateAttr() );
+		assertNull( dataTypes.getTimeText() );
+		assertNull( dataTypes.getTimeAttr() );
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void ensureThatThrowExceptionForEmptyValue() throws ParseException {
+		val data = readFile("empty-any-data-types.html");
+		binder.bind( data, OptionalDataTypes.class );
 	}
 
 	@SneakyThrows

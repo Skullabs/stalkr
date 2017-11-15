@@ -1,5 +1,6 @@
 package stalkr.html.parser;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Time;
 import java.text.ParseException;
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
 import javax.inject.Singleton;
 
 import lombok.RequiredArgsConstructor;
@@ -77,7 +79,7 @@ public class BindableClassFactory {
 	FieldParser<BindableText> bindableText() {
 		return FieldParser.of( BindableText.class,
 				( field, annotation ) -> {
-					return new TextElementSetter( field, annotation.value(), valueParseFor(field) );
+					return new TextElementSetter( field, annotation.value(), valueParseFor(field), isNonnull(field) );
 				});
 	}
 
@@ -86,7 +88,7 @@ public class BindableClassFactory {
 				( field, annotation ) -> {
 					WrappedListOfElementSetter setters = new WrappedListOfElementSetter();
 					for ( BindableText bindableText : annotation.value() )
-						setters.wrap( new TextElementSetter( field, bindableText.value(), valueParseFor(field) ) );
+						setters.wrap( new TextElementSetter( field, bindableText.value(), valueParseFor(field), isNonnull(field) ) );
 					return setters;
 				} );
 	}
@@ -94,7 +96,7 @@ public class BindableClassFactory {
 	FieldParser<BindableAttribute> bindableAttribute() {
 		return FieldParser.of( BindableAttribute.class,
 				( field, annotation )
-				-> new AttributeElementSetter( field, annotation.selector(), annotation.attribute(), valueParseFor(field) ) );
+				-> new AttributeElementSetter( field, annotation.selector(), annotation.attribute(), valueParseFor(field), isNonnull(field) ) );
 	}
 
 	FieldParser<BindableAttributes> bindableAttributes() {
@@ -102,7 +104,8 @@ public class BindableClassFactory {
 				( field, annotation ) -> {
 					WrappedListOfElementSetter setters = new WrappedListOfElementSetter();
 					for ( BindableAttribute attribute : annotation.value() )
-						setters.wrap( new AttributeElementSetter( field, attribute.selector(), attribute.attribute(), valueParseFor(field) ) );
+						setters.wrap( new AttributeElementSetter( field, attribute.selector(), attribute.attribute()
+								, valueParseFor(field), isNonnull(field) ) );
 					return setters;
 				} );
 	}
@@ -183,6 +186,13 @@ public class BindableClassFactory {
 		map.put(Double.class, (text)-> Double.parseDouble(text));
 		map.put(Float.class, (text)-> Float.parseFloat(text));
 		return map;
+	}
+
+	private boolean isNonnull(Field field){
+		val annotation = field.getAnnotation(Nonnull.class);
+		if(annotation == null)
+			return false;
+		return true;
 	}
 
 	public static class Builder {
