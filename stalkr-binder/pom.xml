@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.skullabs.stalkr</groupId>
 		<artifactId>stalkr-parent</artifactId>
-		<version>0.2.8</version>
+		<version>0.3.0</version>
 	</parent>
 
 	<artifactId>stalkr-binder</artifactId>
