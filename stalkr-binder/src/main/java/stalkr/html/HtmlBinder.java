@@ -11,6 +11,7 @@ import stalkr.html.parser.BindableClassFactory;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -73,7 +74,7 @@ public class HtmlBinder {
 
 		private BindableClassFactory.Builder factoryBuilder = new BindableClassFactory.Builder();
 
-		public Builder parser( Class<?> type, Function<String, Object> parser ){
+		public Builder parser( Class<?> type, BiFunction<String, Boolean, Object> parser ){
 			factoryBuilder.parser( type, parser );
 			return this;
 		}

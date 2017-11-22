@@ -1,26 +1,18 @@
 package stalkr.html.parser;
 
-import java.lang.annotation.Annotation;
+import lombok.RequiredArgsConstructor;
+import lombok.val;
+import stalkr.html.*;
+
+import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import java.util.function.BiFunction;
 import java.util.regex.Pattern;
-
-import javax.annotation.Nonnull;
-import javax.inject.Singleton;
-
-import lombok.RequiredArgsConstructor;
-import lombok.val;
-import stalkr.html.*;
 
 @RequiredArgsConstructor
 public class BindableClassFactory {
@@ -28,9 +20,9 @@ public class BindableClassFactory {
 	final Map<Class<?>, BindableClass> cache = new ConcurrentHashMap<>();
 	final List<FieldParser<?>> fieldParsers = Arrays.asList(
 			bindableTexts(), bindableText(), bindableAttributes(), bindableAttribute(), bindableManyTimes(), bindableEmbedded() );
-	final Map<Class<?>, Function<String, Object>> parsers = createValueParsers();
-	final Function<String, Object> dateParser;
-	final Function<String, Object> timeParser;
+	final Map<Class<?>, BiFunction<String, Boolean, Object>> parsers = createValueParsers();
+	final BiFunction<String, Boolean, Object> dateParser;
+	final BiFunction<String, Boolean, Object> timeParser;
 
 	/**
 	 * @param type
@@ -126,7 +118,7 @@ public class BindableClassFactory {
 				} );
 	}
 
-	Function<String, Object> valueParseFor(Field field){
+	BiFunction<String, Boolean, Object> valueParseFor(Field field){
 		val valueParser = valueParseForField( field );
 		val textSearch = field.getAnnotation(BindableTextSearch.class);
 		if ( textSearch != null ) {
@@ -136,7 +128,7 @@ public class BindableClassFactory {
 		return valueParser;
 	}
 
-	Function<String, Object> valueParseForField(Field field){
+	BiFunction<String, Boolean, Object> valueParseForField(Field field){
 		val parser = parsers.get( field.getType() );
 		if ( parser != null )
 			return parser;
@@ -146,7 +138,7 @@ public class BindableClassFactory {
 		throw new RuntimeException("No parser found for field " + field.getName() + " - " + field.getType());
 	}
 
-	Function<String, Object> dateOrTimeParser(Field field){
+	BiFunction<String, Boolean, Object> dateOrTimeParser(Field field){
 		val datePatternAnnotation = field.getAnnotation( DatePattern.class );
 		if ( Time.class.isAssignableFrom(field.getType()) ){
 			if ( datePatternAnnotation != null ) return timeParser( datePatternAnnotation.value() );
@@ -158,8 +150,8 @@ public class BindableClassFactory {
 		return null;
 	}
 
-	static Function<String, Object> dateParser(String datePattern){
-		return (text)-> {
+	static BiFunction<String, Boolean, Object> dateParser(String datePattern){
+		return (text, required)-> {
 			try {
 				return new SimpleDateFormat(datePattern).parse(text);
 			} catch ( ParseException e ){
@@ -168,8 +160,8 @@ public class BindableClassFactory {
 		};
 	}
 
-	static Function<String, Object> timeParser(String datePattern){
-		return (text)-> {
+	static BiFunction<String, Boolean, Object> timeParser(String datePattern){
+		return (text, required)-> {
 			try {
 				return new Time(new SimpleDateFormat(datePattern).parse(text).getTime());
 			} catch ( ParseException e ){
@@ -178,13 +170,13 @@ public class BindableClassFactory {
 		};
 	}
 	
-	Map<Class<?>, Function<String, Object>> createValueParsers(){
-		val map = new HashMap<Class<?>, Function<String, Object>>();
-		map.put(String.class, (text)-> text);
-		map.put(Integer.class, (text)-> Integer.parseInt(text));
-		map.put(Long.class, (text)-> Long.parseLong(text));
-		map.put(Double.class, (text)-> Double.parseDouble(text));
-		map.put(Float.class, (text)-> Float.parseFloat(text));
+	Map<Class<?>, BiFunction<String, Boolean, Object>> createValueParsers(){
+		val map = new HashMap<Class<?>, BiFunction<String, Boolean, Object>>();
+		map.put(String.class, (text, required)-> text);
+		map.put(Integer.class, (text, required)-> Integer.parseInt(text));
+		map.put(Long.class, (text, required)-> Long.parseLong(text));
+		map.put(Double.class, (text, required)-> Double.parseDouble(text));
+		map.put(Float.class, (text, required)-> Float.parseFloat(text));
 		return map;
 	}
 
@@ -197,7 +189,7 @@ public class BindableClassFactory {
 
 	public static class Builder {
 
-		Map<Class<?>, Function<String, Object>> customParsers = new HashMap<>();
+		Map<Class<?>, BiFunction<String, Boolean, Object>> customParsers = new HashMap<>();
 		String datePattern = "dd/MM/yyyy";
 		String timePattern = "HH:mm:ss";
 
@@ -211,7 +203,7 @@ public class BindableClassFactory {
 			return this;
 		}
 
-		public Builder parser(Class<?> type, Function<String, Object> parser){
+		public Builder parser(Class<?> type, BiFunction<String, Boolean, Object> parser){
 			this.customParsers.put(type, parser);
 			return this;
 		}

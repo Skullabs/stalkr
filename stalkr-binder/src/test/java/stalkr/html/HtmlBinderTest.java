@@ -137,9 +137,61 @@ public class HtmlBinderTest {
 	}
 
 	@Test
+	public void ensureThatNotThrowExceptionForEmptyValueWithRegexOption() throws ParseException {
+		val data = readFile( "empty-any-data-types-with-regex.html" );
+		val dataTypes = binder.bind( data, DataTypesWithRegex.class );
+		assertNull( dataTypes.getIntegerText() );
+		assertNull( dataTypes.getIntegerAttr() );
+		assertNull( dataTypes.getLongText() );
+		assertNull( dataTypes.getLongAttr() );
+		assertNull( dataTypes.getFloatText() );
+		assertNull( dataTypes.getFloatAttr() );
+		assertNull( dataTypes.getDoubleText() );
+		assertNull( dataTypes.getDoubleAttr() );
+		assertNull( dataTypes.getDateText() );
+		assertNull( dataTypes.getDateAttr() );
+		assertNull( dataTypes.getTimeText() );
+		assertNull( dataTypes.getTimeAttr() );
+	}
+
+	@Test
+	public void ensureThatNotThrowExceptionForNotFoundElementsWithRegexOption() throws ParseException {
+		val dataTypes = binder.bind( "<div></div>", DataTypesWithRegex.class );
+		assertNull( dataTypes.getIntegerText() );
+		assertNull( dataTypes.getIntegerAttr() );
+		assertNull( dataTypes.getLongText() );
+		assertNull( dataTypes.getLongAttr() );
+		assertNull( dataTypes.getFloatText() );
+		assertNull( dataTypes.getFloatAttr() );
+		assertNull( dataTypes.getDoubleText() );
+		assertNull( dataTypes.getDoubleAttr() );
+		assertNull( dataTypes.getDateText() );
+		assertNull( dataTypes.getDateAttr() );
+		assertNull( dataTypes.getTimeText() );
+		assertNull( dataTypes.getTimeAttr() );
+	}
+
+	@Test
 	public void ensureThatNotThrowExceptionForEmptyValue() throws ParseException {
 		val data = readFile("empty-any-data-types.html");
 		val dataTypes = binder.bind( data, DataTypes.class );
+		assertNull( dataTypes.getIntegerText() );
+		assertNull( dataTypes.getIntegerAttr());
+		assertNull( dataTypes.getLongText());
+		assertNull( dataTypes.getLongAttr());
+		assertNull( dataTypes.getFloatText() );
+		assertNull( dataTypes.getFloatAttr() );
+		assertNull( dataTypes.getDoubleText() );
+		assertNull( dataTypes.getDoubleAttr() );
+		assertNull( dataTypes.getDateText() );
+		assertNull( dataTypes.getDateAttr() );
+		assertNull( dataTypes.getTimeText() );
+		assertNull( dataTypes.getTimeAttr() );
+	}
+
+	@Test
+	public void ensureThatNotThrowExceptionForNotFoundElements() throws ParseException {
+		val dataTypes = binder.bind( "<div></div>", DataTypes.class );
 		assertNull( dataTypes.getIntegerText() );
 		assertNull( dataTypes.getIntegerAttr());
 		assertNull( dataTypes.getLongText());
